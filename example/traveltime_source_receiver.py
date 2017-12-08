@@ -1,7 +1,10 @@
+import sys
+#sys.path.append('..\\scikit-traveltime\\')
+#sys.path.append('..\\..\\scikit-fmm\\skfmm')
+
 import numpy as np
 import pylab as plt
-from traveltime import eikonal_traveltime
-
+import traveltime as tt
 
 #%% TRAVELTIME S-R
 nr=14;
@@ -21,6 +24,6 @@ for i in range(nr):
 plt.axes().set_aspect('equal')
 plt.show()
 
-t = eikonal_traveltime(x,y,[],V,S,R)
+t = tt.eikonal_traveltime(x,y,[],V,S,R)
 plt.plot(R[:,1],t,'-*')
 plt.show()
