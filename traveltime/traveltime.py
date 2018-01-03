@@ -9,7 +9,9 @@ import numpy as np
 import pylab as plt
 import skfmm
 
-
+'''
+eikonal: simple wrappwe for skfmmm using as single source
+'''
 def eikonal(x=[],y=[],z=[],V=[],S=[]):
     import numpy as np
     import skfmm
@@ -50,20 +52,34 @@ def eikonal(x=[],y=[],z=[],V=[],S=[]):
 
 
 
+'''
+eikonal_traveltime: simple wrappwe for skfmmm using as single source
+'''
 def eikonal_traveltime(x=[],y=[],z=[],V=[],S=[],R=[]):
     import numpy as np
-    import skfmm
+    #import skfmm
     from scipy import interpolate
-    
-    
-    phi = -1*np.ones_like(V)    
+        
 
-    nr, ndim = R.shape
+    nr, ndim = np.atleast_2d(R).shape
+    ns, ndim = np.atleast_2d(S).shape
+
+    if ((ns==nr)&(ns>1)):
+        print('More than one set of sources and receivers (ns=nr=%d). using eikonal_traveltime_mul instaed' % ns)
+        t = eikonal_traveltime_mul(x,y,z,V,S,R)    
+        return t
+        
+
+    if (ns>1):
+        print('Number for sources larger than 1(ns=%d)! use eikonal_traveltime_mul instead' % ns)
+
+    
     t=np.zeros(nr)
+    #phi = -1*np.ones_like(V)    
 
-
-    i_source = 0;
-    t_map = eikonal(x,y,z,V,S[i_source,:])
+    #i_source = 0;
+    #t_map = eikonal(x,y,z,V,S[i_source,:])
+    t_map = eikonal(x,y,z,V,S)
 
     if ndim==2:   
         f = interpolate.interp2d(x, y, t_map, kind='cubic');
@@ -76,6 +92,44 @@ def eikonal_traveltime(x=[],y=[],z=[],V=[],S=[],R=[]):
             
     return t
     
+
+'''
+eikonal_traveltime: simple wrappwe for skfmmm using multiple sources
+'''
+def eikonal_traveltime_mul(x=[],y=[],z=[],V=[],S=[],R=[]):
+    
+    nr, ndim = R.shape
+    ns, ndim = S.shape
+
+    
+    # Check that S and R have the same size
+    if (ns != nr):
+        print('Number for sources and receivers is not the same(ns=%d, nr=%d)! ' % (ns,nr))
+    
+    t=np.zeros(nr)
+    
+    
+    # Find unique sources 
+    Su=np.unique(S, axis=0)
+    nsu,ndim = Su.shape
+    # print('Number for unique source locations is %d (out of %d sources). ' % (nsu,ns))
+        
+    for i in range(nsu):
+        # print('working with source %03d/%03d, at location [%4g,%4g]' % (i+1,nsu,Su[i,0],Su[i,1]))
+        
+        Srow = Su[i,0:2]
+    
+        # findo matching rows
+        dummy=np.where(np.all(Srow==S,axis=1))
+        i_index = dummy[0]
+    
+        t_i = eikonal_traveltime(x,y,z,V,Srow,R[i_index,:])
+        
+        # update traveltime 
+        t[i_index] = t_i
+
+    return t
+
 
 def example_map():
     
