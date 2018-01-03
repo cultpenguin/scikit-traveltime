@@ -23,7 +23,7 @@ from distutils.core import setup
 setup(
     name = 'scikit-traveltime',
     #packages = ['scikit-traveltime'], # this must be the same as the name above
-    version = '0.0.4',
+    version = '0.0.5',
     description = 'Traveltime computation based on the fast marching method for solving the eikonal equation',
     author = 'Thomas Mejer Hansen',
     author_email = 'thomas.mejer.hansen@gmail.com',
@@ -33,6 +33,7 @@ setup(
     classifiers = [
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
     ],
     packages=find_packages(exclude=['contrib', 'docs', 'tests']), # Required

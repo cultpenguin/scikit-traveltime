@@ -44,7 +44,7 @@ Installing
 Version History:
 ~~~~~~~~~~~
 * 0.0.1: July 1st, 2017
-* 0.0.3: January 3rd, 2017
+* 0.0.4: January 3rd, 2017
   
 Copyright 2018 Thomas Mejer Hansen
 
