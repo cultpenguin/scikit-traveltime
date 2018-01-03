@@ -1,6 +1,5 @@
 """Traveltime computation based on scikit-fmm
 See:
-https://packaging.python.org/en/latest/distributing.html
 https://github.com/cultpenguin/scikit-traveltime
 """
 
@@ -24,7 +23,7 @@ from distutils.core import setup
 setup(
     name = 'scikit-traveltime',
     #packages = ['scikit-traveltime'], # this must be the same as the name above
-    version = '0.0.2',
+    version = '0.0.3',
     description = 'Traveltime computation based on the fast marching method for solving the eikonal equation',
     author = 'Thomas Mejer Hansen',
     author_email = 'thomas.mejer.hansen@gmail.com',
