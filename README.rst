@@ -1,13 +1,11 @@
 scikit-traveltime: traveltime calculation using the fast marching method for Python
 ===================================================================================
 
-::```python
-import traveltime
-v = 3000*np.ones((3, 3))
-t = traveltime(x,y,z,V,S,R)
-```
-
----
+```python::
+import traveltime::
+v = 3000*np.ones((3, 3))::
+t = traveltime(x,y,z,V,S,R)::
+```::
 
 
 Documentation
