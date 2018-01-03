@@ -1,5 +1,5 @@
-# scikit-traveltime: traveltime calculation using the fast marching method for Python
-
+scikit-traveltime: traveltime calculation using the fast marching method for Python
+===================================================================================
 
 ```python
 import traveltime
@@ -10,10 +10,12 @@ t = traveltime(x,y,z,V,S,R)
 ---
 
 
-### Documentation
+Documentation
+--------------
 
-### PyPI
-* http://pypi.python.org/pypi/scikit-traveltime
+PyPI
+~~~~~~~~~~~
+`<http://pypi.python.org/pypi/scikit-traveltime>`
 
 ### Requirements
 * Numpy >= 1.0.2
