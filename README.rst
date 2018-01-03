@@ -7,6 +7,11 @@ v = 3000*np.ones((3, 3))::
 t = traveltime(x,y,z,V,S,R)::
 ```::
 
+.. code:: javascript
+
+    function whatever() {
+        return "such color"
+    }
 
 Documentation
 --------------
