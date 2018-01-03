@@ -1,1 +1,0 @@
-from .scikit-traveltime import traveltime 
