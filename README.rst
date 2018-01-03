@@ -4,10 +4,22 @@ scikit-traveltime: traveltime calculation using the fast marching method for Pyt
 
 .. code:: 
 
-    import traveltime
-    v = 3000*np.ones((3, 3))
-    t = traveltime.eikonal_traveltime(x,y,z,V,S,R)
-    
+   import numpy as np
+   import traveltime as tt
+   plt.ion() 
+   
+   #%% CREATE REFERENCE VELOCITY MODEL
+   dx=0.1;
+   x = np.arange(-1,6,dx)
+   y = np.arange(-1,13,dx)
+   V=0.1*np.ones((len(y),len(x)))
+   
+   #%% SET SOURCE AND RECEIVERS
+   S=np.array([[0,2],[0,5],[0,4]])
+   R=np.array([[5,12],[5,5],[5,1]])
+   
+   t = tt.eikonal_traveltime(x,y,[],V,S,R)
+       
 
 Documentation
 --------------
