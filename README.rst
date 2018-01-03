@@ -22,16 +22,16 @@ Requirements
 * Numpy >= 1.0.2
 * scikit-fmm >= 1
 
-### Bugs, questions, patches, feature requests, discussion & cetera
-~~~
+Bugs, questions, patches, feature requests, discussion & cetera
+~~~~~~~~~~~
 * Open a GitHub pull request or a GitHub issue
 
 Installing
-~~~
+~~~~~~~~~~~
 * Via pip: `pip install scikit-traveltime`
 
 Version History:
-~~~
+~~~~~~~~~~~
 * 0.0.1: July 1st, 2017
 * 0.0.3: January 3rd, 2017
   
