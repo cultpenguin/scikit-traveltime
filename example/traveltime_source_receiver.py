@@ -10,8 +10,8 @@ x = np.arange(-1,6,dx)
 y = np.arange(-1,13,dx)
 xx,yy = np.meshgrid(x,y)
 V = 0.1*np.ones_like(xx);
-#V[yy>6] = 0.15;
-#V[np.logical_and(np.abs(yy)>7, xx>2.5)] = 0.18;
+V[yy>6] = 0.15;
+V[np.logical_and(np.abs(yy)>7, xx>2.5)] = 0.18;
 
 
 #%% SET SOURCE AND RECEIVERS
