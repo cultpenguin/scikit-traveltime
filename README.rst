@@ -1,10 +1,10 @@
 scikit-traveltime: traveltime calculation using the fast marching method for Python
 ===================================================================================
 
-.. image:: https://img.shields.io/pypi/v/pypinfo.svg?style=flat-square
+.. image:: https://img.shields.io/pypi/v/scikit-traveltime.svg?style=flat-square
     :target: https://pypi.org/project/scikit-traveltime
 
-.. image:: https://img.shields.io/pypi/pyversions/pypinfo.svg?style=flat-square
+.. image:: https://img.shields.io/pypi/pyversions/scikit-traveltime.svg?style=flat-square
     :target: https://pypi.org/project/scikit-traveltime
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
