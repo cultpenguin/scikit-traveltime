@@ -22,7 +22,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 from distutils.core import setup
 setup(
     name = 'scikit-traveltime',
-    version = '0.0.6',
+    version = '0.1.0',
     description = 'Traveltime computation based on the fast marching method for solving the eikonal equation',
     author = 'Thomas Mejer Hansen',
     author_email = 'thomas.mejer.hansen@gmail.com',
@@ -36,6 +36,6 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     packages=find_packages(exclude=['contrib', 'docs', 'tests']), # Required
-    install_requires=['numpy >= 1.0.2', 'scikit-fmm >= 0.0.9'],
+    install_requires=['numpy >= 1.0.2', 'scipy >= 1.0.0', 'scikit-fmm >= 0.0.9'],
 )
 
