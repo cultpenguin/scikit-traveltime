@@ -14,7 +14,6 @@ scikit-traveltime: traveltime calculation using the fast marching method for Pyt
 
    import numpy as np
    import traveltime as tt
-   plt.ion() 
    
    #%% CREATE REFERENCE VELOCITY MODEL
    dx=0.1;
@@ -38,7 +37,8 @@ PyPI
 
 Requirements
 ~~~~~~~~~~~
-* Numpy >= 1.0.2
+* numpy >= 1.0.2
+* scipy >= 1.0.0
 * scikit-fmm >= 1
 
 Bugs, questions, patches, feature requests, discussion & cetera
@@ -53,7 +53,8 @@ Version History:
 ~~~~~~~~~~~
 * 0.0.1: July 1st, 2017
 * 0.0.4: January 3rd, 2017
+* 0.1.0: November 11, 2022 (cleanup)
   
-Copyright 2018 Thomas Mejer Hansen
+Copyright 2022 Thomas Mejer Hansen
 
 BSD-style license. See LICENSE.txt in the source directory.
