@@ -23,7 +23,9 @@ from distutils.core import setup
 setup(
     name = 'scikit-traveltime',
     version = '0.1.0',
-    description = 'Traveltime computation based on the fast marching method for solving the eikonal equation',
+    description = 'Traveltime computation using scikit-fmm',
+    long_description='Traveltime computation based on the fast marching method for solving the eikonal equation',
+    long_description_content_type='text/x-rst',
     author = 'Thomas Mejer Hansen',
     author_email = 'thomas.mejer.hansen@gmail.com',
     url = 'https://github.com/cultpenguin/scikit-traveltime', # use the URL to the github repo
