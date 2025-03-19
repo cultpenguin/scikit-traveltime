@@ -10,18 +10,30 @@ VERSION=$(grep "version" pyproject.toml | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)"
 
 echo "=== Building $MODULE_NAME v$VERSION ==="
 
-# Clean up old builds
+# Clean up old builds - more thorough cleaning
 echo "Cleaning up old build artifacts..."
-rm -rf dist/ build/ *.egg-info/
+rm -rf dist/ build/ *.egg-info/ **/*.egg-info/
+find . -name '*.pyc' -delete
+find . -name '__pycache__' -delete
+find . -name '*.so' -delete
 
 # Make sure you have the required tools
 echo "Updating build tools..."
 pip install --upgrade pip
 pip install --upgrade build setuptools wheel twine
 
+# Add debug step - check pyproject.toml content
+echo "Checking pyproject.toml content:"
+cat pyproject.toml
+
 # Build distribution packages using build module (PEP 517)
 echo "Building distribution packages..."
 python -m build
+
+# Print contents of PKG-INFO file for debugging
+echo "Checking metadata file content:"
+unzip -p dist/*.whl '*.dist-info/METADATA' || echo "Cannot inspect wheel metadata"
+echo ""
 
 echo "=== Build complete ==="
 echo "Distribution files created:"
@@ -31,6 +43,8 @@ ls -l dist/
 echo -e "\n=== TestPyPI Upload ==="
 read -p "Upload to TestPyPI for verification? [y/N] " test_upload
 if [[ $test_upload =~ ^[Yy]$ ]]; then
+    python -m twine check dist/*
+    echo "Uploading to TestPyPI..."
     python -m twine upload --repository testpypi dist/*
     echo -e "\nTestPyPI upload complete!"
     echo "You can install and test with:"
@@ -42,6 +56,8 @@ fi
 echo -e "\n=== PyPI Upload ==="
 read -p "Upload to PyPI for production release? [y/N] " prod_upload
 if [[ $prod_upload =~ ^[Yy]$ ]]; then
+    python -m twine check dist/*
+    echo "Uploading to PyPI..."
     python -m twine upload dist/*
     echo -e "\nPyPI upload complete!"
     echo "Your package is now available via:"

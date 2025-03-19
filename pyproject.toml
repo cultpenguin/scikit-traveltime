@@ -10,6 +10,7 @@ readme = "README.rst"
 authors = [
     {name = "Thomas Mejer Hansen", email = "thomas.mejer.hansen@gmail.com"}
 ]
+license = {text = "MIT"}
 classifiers = [
     "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",

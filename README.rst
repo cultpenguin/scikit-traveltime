@@ -54,7 +54,8 @@ Version History:
 * 0.0.1: July 1st, 2017
 * 0.0.4: January 3rd, 2017
 * 0.1.0: November 11, 2022 (cleanup)
+* 0.1.2: March 19, 2025 (depreceted use of interp2d, moved to pyproject.toml)
   
 Copyright 2022 Thomas Mejer Hansen
 
-BSD-style license. See LICENSE.txt in the source directory.
+See LICENSE (MIT) in the source directory.
