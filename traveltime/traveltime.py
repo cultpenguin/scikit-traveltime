@@ -73,20 +73,28 @@ def eikonal_traveltime(x=[],y=[],z=[],V=[],S=[],R=[]):
 
     
     t=np.zeros(nr)
-    #phi = -1*np.ones_like(V)    
-
-    #i_source = 0;
-    #t_map = eikonal(x,y,z,V,S[i_source,:])
     t_map = eikonal(x,y,z,V,S)
 
-    if ndim==2:   
-        f = interpolate.interp2d(x, y, t_map, kind='cubic');
-        tt = f(R[:,0].transpose(),R[:,1].transpose())
+    if ndim==2:
+        # Replace interp2d with LinearNDInterpolator for better compatibility
+        # Create grid coordinates for interpolation
+        X, Y = np.meshgrid(x, y)
+        points = np.column_stack((X.flatten(), Y.flatten()))
+        values = t_map[0].flatten()
+        
+        # Create interpolator
+        interp = interpolate.LinearNDInterpolator(points, values)
+        
+        # Interpolate at receiver locations
         for i in range(nr):
-            Rx=R[i,0]
-            Ry=R[i,1]
-            tt=f(Rx,Ry)
-            t[i]=tt[0]
+            Rx = R[i,0]
+            Ry = R[i,1]
+            t[i] = interp(Rx, Ry)
+            
+            # If point is outside the convex hull of input points, use nearest value
+            if np.isnan(t[i]):
+                nearest_interp = interpolate.NearestNDInterpolator(points, values)
+                t[i] = nearest_interp(Rx, Ry)
             
     return t
     
