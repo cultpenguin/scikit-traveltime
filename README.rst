@@ -36,21 +36,21 @@ PyPI
 `<http://pypi.python.org/pypi/scikit-traveltime>`
 
 Requirements
-~~~~~~~~~~~
+~~~~~~~~~~~~
 * numpy >= 1.0.2
 * scipy >= 1.0.0
 * scikit-fmm >= 1
 
 Bugs, questions, patches, feature requests, discussion & cetera
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Open a GitHub pull request or a GitHub issue
 
 Installing
-~~~~~~~~~~~
+~~~~~~~~~~
 * Via pip: `pip install scikit-traveltime`
 
 Version History:
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 * 0.0.1: July 1st, 2017
 * 0.0.4: January 3rd, 2017
 * 0.1.0: November 11, 2022 (cleanup)
