@@ -63,7 +63,7 @@ def eikonal_traveltime(x=[],y=[],z=[],V=[],S=[],R=[]):
     ns, ndim = np.atleast_2d(S).shape
 
     if ((ns==nr)&(ns>1)):
-        print('More than one set of sources and receivers (ns=nr=%d). using eikonal_traveltime_mul instaed' % ns)
+        print('More than one set of sources and receivers (ns=nr=%d). using eikonal_traveltime_mul instead' % ns)
         t = eikonal_traveltime_mul(x,y,z,V,S,R)    
         return t
         

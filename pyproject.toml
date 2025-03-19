@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scikit-traveltime"
+version = "0.1.2"
+description = "Traveltime computation using scikit-fmm"
+readme = "README.rst"
+authors = [
+    {name = "Thomas Mejer Hansen", email = "thomas.mejer.hansen@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.6",
+]
+keywords = ["traveltime", "eikonal", "fast-marching"]
+requires-python = ">=2.7"
+dependencies = [
+    "numpy >= 1.0.2",
+    "scipy >= 1.0.0",
+    "scikit-fmm >= 0.0.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/cultpenguin/scikit-traveltime"
+Repository = "https://github.com/cultpenguin/scikit-traveltime"
+"Download" = "https://github.com/cultpenguin/scikit-traveltime/archive/master.zip"
+
+[tool.setuptools]
+# Define specific packages to include
+packages = ["traveltime"]
