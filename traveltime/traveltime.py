@@ -76,25 +76,19 @@ def eikonal_traveltime(x=[],y=[],z=[],V=[],S=[],R=[]):
     t_map = eikonal(x,y,z,V,S)
 
     if ndim==2:
-        # Replace interp2d with LinearNDInterpolator for better compatibility
-        # Create grid coordinates for interpolation
-        X, Y = np.meshgrid(x, y)
-        points = np.column_stack((X.flatten(), Y.flatten()))
-        values = t_map[0].flatten()
-        
-        # Create interpolator
-        interp = interpolate.LinearNDInterpolator(points, values)
+        # Use RegularGridInterpolator for faster 2D interpolation
+        interpolator = interpolate.RegularGridInterpolator((x, y), t_map[0].T, method='linear', bounds_error=False, fill_value=np.nan)
         
         # Interpolate at receiver locations
-        for i in range(nr):
-            Rx = R[i,0]
-            Ry = R[i,1]
-            t[i] = interp(Rx, Ry)
-            
-            # If point is outside the convex hull of input points, use nearest value
-            if np.isnan(t[i]):
-                nearest_interp = interpolate.NearestNDInterpolator(points, values)
-                t[i] = nearest_interp(Rx, Ry)
+        points = np.column_stack((R[:, 0], R[:, 1]))
+        t = interpolator(points)
+        
+        # Handle any potential NaN values
+        nan_mask = np.isnan(t)
+        if np.any(nan_mask):
+            # Fall back to nearest neighbor interpolation if needed
+            nearest = interpolate.RegularGridInterpolator((x, y), t_map[0].T, method='nearest', bounds_error=False)
+            t[nan_mask] = nearest(points[nan_mask])
             
     return t
     

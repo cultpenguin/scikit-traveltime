@@ -9,6 +9,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import traveltime as tt
+import time
 
 
 # ## Create reference velocity model
@@ -62,7 +63,10 @@ ax0.set_title('Velocity model, and Source-Receiver locations')
 
 
 #t = tt.eikonal_traveltime(x,y,[],V,S,R)
+t0 = time.time()
 t = tt.eikonal_traveltime(x,y,[],V,S,R)
+t1 = time.time()
+print('Traveltime computation time: %.2f s' % (t1-t0))
 plt.figure()
 if useModel==2:
     plt.plot(i_use,AM13[i_use,9], label='Matlab FMM')
